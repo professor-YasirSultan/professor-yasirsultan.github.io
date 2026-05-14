@@ -1,89 +1,330 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <title>Yasir Sultan - HomePage</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+    <title>Yasir Sultan</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --text-color: #e2e8f0;
+            --accent-color: #38bdf8;
+            --card-bg: #1e293b;
+            --border-color: #334155;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .header-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #fff;
+            margin: 0 0 0.5rem 0;
+            font-size: 2.5rem;
+        }
+        .tagline {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+        .contacts {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .contacts a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+        .contacts a:hover {
+            color: var(--accent-color);
+        }
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        section {
+            margin-bottom: 3.5rem;
+        }
+        h2 {
+            color: #fff;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+        .card h3 {
+            margin-top: 0;
+            color: #fff;
+        }
+        .badge {
+            background-color: #334155;
+            color: var(--accent-color);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+        .badge-seprator{
+            width:50px;
+display: inline-block;
+        }
+        .skill-category {
+            margin-bottom: 1.5rem;
+        }
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .tag {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+        .timeline-item {
+            border-left: 2px solid var(--border-color);
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 6px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+        }
+        .time {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        .job-title {
+            font-weight: bold;
+            color: #fff;
+        }
+        .company {
+            color: #94a3b8;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+        ul {
+            padding-left: 1.2rem;
+            margin: 0.5rem 0;
+        }
+        li {
+            margin-bottom: 0.25rem;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #64748b;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
-
 <body>
-    <div class="container" id="top">
-        <table class="header-table">
-            <tr>
-                <!-- <td>
-                    <img src="img/icon.png" alt="YSFOML icon" style="width: 150px;">
-                </td> -->
-                <td>
-                    <h1>Yasir Sultan</h1>
-                    <h2>Yasir Sultan home page</h2>
-                </td>
-            </tr>
-        </table>
-<!-- 
-        <div class="table-of-contents">
-            <h2>Table of Contents</h2>
-            <ul>
-                <li><a href="#introduction">1. Introduction</a></li>
-                <li><a href="#aspects">2. Key aspects and features:</a>
-                    <ul>
-                        <li><a href="#block-structure">2.1 YSFOML Block Structure</a></li>
-                        <li><a href="#parameters">2.2 Parameters</a></li>
-                        <li><a href="#base-folder">2.3 Base Folder</a></li>
-                        <li><a href="#security-levels">2.4 Security Levels</a></li>
-                        <li><a href="#user-defined-actions">2.5 User-Defined Actions (actionSource: userAdded)</a></li>
-                        <li><a href="#document-visualization">2.6 YSFOML Document Visualization</a></li>
-                    </ul>
-                </li>
-                <li><a href="#documentation">3. Documentation</a>
-                </li>
-                <li><a href="#howToUse">4. How to Use</a></li>
-                <li><a href="#parser">5. YSFOML Parser/Processor</a>
-                </li>
-                <li><a href="#links">6. Useful Links</a></li>
-                <li><a href="#disclaimer">7. Disclaimer</a></li>
-            </ul>
-        </div> -->
 
-        <h1>Projects:</h1>
+    <header>
+        <div class="header-container">
+            <h1>Yasir Sultan</h1>
+            <div class="tagline">Academic Lecturer | Simulation Engineer | Tech Content Creator</div>
+            <div class="contacts">
+	<a href="https://professor-yasirsultan.github.io" target="_blank">🌐 GitHub Pages</a>
+                <a href="https://github.com/professor-yasirsultan" target="_blank">💻 GitHub</a>
 
-
-        <div class="projDiv">
-            <h2 id="YSGF"><span>YSGF (Yasir Sultan Geodesic Flux)</span></h2>
-            <h6><a class="PPlink" href="https://professor-yasirsultan.github.io/ysgf/">🔗 project page 🔗</a> <a
-                    href="#top" class="go-to-top">↑
-                    Top</a>
-            </h6>
-            <p>open source geographic project</p>
+            </div>
+            <div class="contacts">
+                <a href="https://www.youtube.com/@prof.yasir.sultan" target="_blank">🎥 YouTube Channel</a>
+	<a href="https://www.linkedin.com/in/ysultan/" target="_blank">👔 LinkedIn</a>
+                <a href="https://www.facebook.com/yasir.sy" target="_blank">👥 Facebook</a>
+            </div>
+            <div class="contacts">
+                <a href="mailto:yasir.sultan@live.com">📧 yasir.sultan@live.com</a>
+<a href="https://wa.me/00963933823599" target="_blank">💬 WhatsApp / Telegram: +963 933 823 599</a>
+                <span></span>
+            </div>
         </div>
+    </header>
+
+    <main>
+        <!-- About Me Section -->
+        <section id="about">
+            <h2>Professional Profile</h2>
+            <p>Versatile Systems Engineer and Academic Lecturer with over 15 years of deep technical expertise bridging computer graphics, physics simulation, and low-level software architectures. A passionate educator at Damascus University, specialized in training next-generation engineers in algorithms and performance-critical programming, combined with media experience as a national TV technology presenter.</p>
+        </section>
+
+        <!-- Custom Core Frameworks -->
+        <section id="frameworks">
+            <h2>Proprietary Frameworks & Open Source Projects</h2>
+
+            <div class="grid">
 
 
-        <div class="projDiv">
-            <h2 id="YSFOML"><span>YSFOML (Yasir Sultan File Operations Markup Language)</span> </h2>
-            <h6><a class="PPlink" href="https://professor-yasirsultan.github.io/YSFOML/">🔗 project page 🔗</a> <a
-                    href="#top" class="go-to-top">↑
-                    Top</a>
-            </h6>
-            <p>YSFOML (Yasir Sultan File Operations Markup Language) is a powerful and intuitive markup language
-                designed to streamline and automate file system operations. It provides a structured and human-readable
-                way to define a series of file-related tasks, making complex operations simple and repeatable. YSFOML
-                aims to bridge the gap between human intent and automated file management, offering a robust framework
-                for various development and maintenance workflows. </p>
-        </div>
+                <div class="card">
+                    <span class="badge">AI tool, Files management </span>
+                    <h3>YSFOML (File Operations Markup Language)</h3>
+                    <p>YSFOML (Yasir Sultan File Operations Markup Language) is a powerful and intuitive markup language (with a parser) designed to streamline and automate file system operations. It provides a structured and human-readable way to define a series of file-related tasks, making complex operations simple and repeatable. YSFOML aims to bridge the gap between human intent and automated file management, offering a robust framework for various development and maintenance workflows.</p>
+<p>YSFOML is meticulously designed to facilitate AI interaction with file systems, while simultaneously upholding the highest levels of security through its inherent 'human-in-the-loop' model.</p>
+<a href="https://professor-yasirsultan.github.io/YSFOML" target="_blank"><span class="badge">Project Page</span></a>
+<span class="badge-seprator">&nbsp;</span>
+<a href="https://github.com/professor-yasirsultan/YSFOML" target="_blank"><span class="badge">Project github</span></a>
+
+                </div>
 
 
-        <div class="projDiv">
-            <h2 id="YSGL"><span>YSGL (Yasir Sultan Graphics Library)</span></h2>
-            <h6><a class="PPlink" href="https://professor-yasirsultan.github.io/YSGL/">🔗 project page 🔗</a> <a
-                    href="#top" class="go-to-top">↑
-                    Top</a>
-            </h6>
-            <p>      open source Graphics Library based on legacy OpenGL and C++
-</p>
-        </div>
+                <div class="card">
+                    <span class="badge">GIS, Geospatial Computing, Geography education</span>
+                    <h3>YSGF (Yasir Sultan Geodesic Flux)</h3>
+                    <p>An open-source geospatial and geodesic framework designed for spatial analysis, mapping, Geography education, and high-performance processing of geographic telemetry and coordinate tracking systems.</p>
+<a href="https://professor-yasirsultan.github.io/ysgf" target="_blank"><span class="badge">Project Page</span></a>
+<span class="badge-seprator">&nbsp;</span>
+<a href="https://github.com/professor-yasirsultan/ysgf" target="_blank"><span class="badge">Project github</span></a>
+                </div>
+
+                <div class="card">
+                    <span class="badge">Graphics & simulation</span>
+                    <h3>YSGL (Yasir Sultan Graphics Library)</h3>
+                    <p>A native, custom-built 3D graphics library written from scratch in C++ and OpenGL. Actively deployed as the official academic curriculum framework for 4th-year Computer Technology students to teach game engine architectures and methods (Transformation , Texture, 3D models, etc...).</p>
+<a href="https://professor-yasirsultan.github.io/YSGL" target="_blank"><span class="badge">Project Page</span></a>
+<span class="badge-seprator">&nbsp;</span>
+<a href="https://github.com/professor-yasirsultan/YSGL" target="_blank"><span class="badge">Project github</span></a>
+                </div>
+
+
+            </div>
+        </section>
+
+        <!-- Professional Experience -->
+        <section id="experience">
+            <h2>Academic & Professional Experience</h2>
+            
+            <div class="timeline-item">
+                <div class="time">2011 - Present</div>
+                <div class="job-title">Academic Lecturer & Lab Supervisor</div>
+                <div class="company">Damascus University (Faculty of Information Engineering, Sciences, & Applied College)</div>
+                <ul>
+                    <li><strong>Faculty of Information Engineering:</strong> Taught C/C++ Programming (Levels 1, 2, 3) and supervised scientific calculations, physics engine simulations, and AI search projects.</li>
+                    <li><strong>Applied College (Mechatronics & Computer Tech):</strong> Lectured on Advanced C++, C#, Data Structures, Algorithms, and Computer Graphics architectures (OpenGL & YSGL).</li>
+                    <li><strong>Faculty of Sciences:</strong> Lectured on Computational Physics, Electronics, and Numeric Analysis using MATLAB.</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <div class="time">2011 - 2019</div>
+                <div class="job-title">TV Tech Producer & Media Presenter</div>
+                <div class="company">Syrian National Television Networks</div>
+                <ul>
+                    <li>Created, produced, and hosted the weekly "Tech New" segment on Syrian National TV.</li>
+                    <li>Featured as a frequent expert technical guest on multiple regional television networks (Sama TV, Educational TV, etc) to evaluate global engineering and consumer tech paradigms.</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <div class="time">2003 - Present</div>
+                <div class="job-title">Senior Technical Instructor</div>
+                <div class="company">International Training Centers (New Horizons, Al-Mamoun International,...)</div>
+                <ul>
+                    <li>Instructed certified corporate and academic tracks covering Game Engine Math, VR deployment via Unity, Advanced Data Structures, and Embedded Controls using Arduino hardware.</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <div class="time">2006 - 2008</div>
+                <div class="job-title">Head of Software Engineering & Web Architecture</div>
+                <div class="company">Arabella Corporation</div>
+                <ul>
+                    <li>Managed the cross-functional engineering team building commercial web applications and spearheaded technical training programs for sales engineering teams.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Technical Matrix -->
+        <section id="skills">
+            <h2>Technical Skillset Matrix</h2>
+            
+            <div class="skill-category">
+                <h3>Low-Level & Core Systems</h3>
+                <div class="skill-tags">
+                    <span class="tag">C++ (Modern & Legacy)</span>
+                    <span class="tag">C Language</span>
+                    <span class="tag">C# (.NET)</span>
+                    <span class="tag">OpenGL Engine Pipeline</span>
+                    <span class="tag">Memory Management</span>
+                    <span class="tag">Parser Design</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Algorithms & Physics Simulation</h3>
+                <div class="skill-tags">
+                    <span class="tag">Advanced Data Structures</span>
+                    <span class="tag">Graph Search & AI Pathfinding</span>
+                    <span class="tag">Rigid Body Physics Simulation</span>
+                    <span class="tag">Scientific Computing</span>
+                    <span class="tag">MATLAB</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Full-Stack, VR & IoT Ecosystems</h3>
+                <div class="skill-tags">
+                    <span class="tag">Three.js / WebGL</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">PHP (Native / Laravel / CodeIgniter)</span>
+                    <span class="tag">Unity VR Development</span>
+                    <span class="tag">Arduino & Industrial Embedded Control</span>
+                    <span class="tag">Flutter (Dart)</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Yasir Sultan.</p>
+    </footer>
+
 </body>
-
 </html>
